@@ -1,0 +1,8 @@
+var clientCredentials = new VssCredentials(new WindowsCredential(new NetworkCredential(NetworkUserName, NetworkPassword, NetworkDomain)));
+            Uri serverUrl = new Uri(TFSDefaultCollectionUrl);
+            var connection = new VssConnection(serverUrl, clientCredentials);
+            Console.WriteLine("Exception connection success ");
+           // var buildServer = connection.GetClient<BuildHttpClient>(); // connect to the build server subpart
+            BuildHttpClient buildServer = connection.GetClient<BuildHttpClient>();
+            Console.WriteLine("Exception connection build server ");
+            var tfsTestManagement = connection.GetClient<TestManagementHttpClient>();
